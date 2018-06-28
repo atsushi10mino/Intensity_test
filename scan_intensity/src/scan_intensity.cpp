@@ -36,8 +36,8 @@ void intensityCallback(const sensor_msgs::LaserScan &msg)
 				count++;*/
 		}
 	
-		intensity_point_pub.publish(strong); 
 	}
+	intensity_point_pub.publish(strong); 
 	//ROS_INFO("hogehoge,%d",count);
 }
 
