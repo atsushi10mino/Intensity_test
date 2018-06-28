@@ -20,11 +20,13 @@ void intensityCallback(const sensor_msgs::LaserScan &msg)
 
 	//strong.ranges.clear();
 	//strong.intensities.clear();
-
+	
+	float max_intensity = *std::max_element(msg.intensities.begin(),msg.intensities.end());
+	float min_intensity = *std::min_element(msg.intensities.begin(),msg.intensities.end());
 
 	for(int i = 0 ; i < strong.ranges.size() ;  i++)
 	{		
-		if(msg.intensities[i]>10000)
+		if(max_intensity > 8000 && (msg.intensities[i] - min_intensity) / (max_intensity - min_intensity) > 0.9)
 		{	
 			strong.ranges.insert(strong.ranges.begin() + i, msg.ranges[i]);
 			strong.intensities.insert(strong.intensities.begin() + i, msg.intensities[i]);
