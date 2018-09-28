@@ -63,8 +63,6 @@ int main(int argc, char **argv)
 	
 	intensity_point_pub = nh.advertise<sensor_msgs::LaserScan>("strong_reflection_point",100);
 	
-	ros::Rate loop_rate(100);
-	
 	ros::spin();
 
 	return 0;
